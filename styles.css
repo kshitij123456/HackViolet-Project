@@ -1,0 +1,83 @@
+body {
+    background: #393e46;
+}
+
+.heading {
+    color: #eeeeee;
+    padding-top: 80px;
+    padding-bottom: 50px;
+}
+
+.banner {
+    width: 100%;
+    background: #eeeeee;
+    position: relative;
+}
+
+.banner img {
+    margin-left: 40%;
+    max-width: 100%;
+    max-height: 500px;
+}
+
+.banner p {
+    max-width: 500px;
+    position: absolute;
+    left: 3%;
+    top: 10%;
+    padding: 20px;
+}
+
+.Logo {
+    width: 10%;
+    height: 101%;
+}
+
+.AboutUsDiv {
+    background: #eeeeee;
+    ;
+    text-align: center;
+}
+
+.ContactUsDiv {
+    background: #eeeeee;
+    text-align: center;
+}
+
+
+/* .navbar {
+    background-image: url("CureMeet.png");
+} */
+
+.backimage {
+    background-image: url("pic1.jpg");
+    /* The image used */
+    background-color: #cccccc;
+    /* Used if the image is unavailable */
+    width: 2000px;
+    height: 500px;
+    /* You must set a specified height */
+    background-position: center;
+    /* Center the image */
+    background-repeat: no-repeat;
+    /* Do not repeat the image */
+}
+
+.AboutUsDiv {
+    margin-left: 15%;
+    max-width: 70%;
+}
+
+.ContactUsDiv {
+    margin-left: 15%;
+    max-width: 70%;
+}
+
+.bar {
+    position: fixed;
+    padding: 0px;
+    margin: 0px;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
