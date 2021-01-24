@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>The Materialize Tabs Example</title>
+      <meta name = "viewport" content = "width = device-width, initial-scale = 1">      
+      <link rel = "stylesheet"
+         href = "https://fonts.googleapis.com/icon?family=Material+Icons">
+      <link rel = "stylesheet" 
+         href = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+      <script type = "text/javascript"
+         src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>           
+      <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
+      </script> 
+   </head>
+   
+   <body class = "container"> 
+      
+      <div class="container" style="margin-left: 10%; margin-top: 10%;">
+        <h3 style="text-align: center;">Let's Get Started!</h3>
+        <div class = "row">
+            <div class = "col s12">
+               <ul class = "tabs">
+                  <li class = "tab col s6"><a  class="active" href = "#login">Login</a></li>
+                  <li class = "tab col s6"><a  href = "#signup">
+                     Signup</a></li>
+               
+               </ul>
+            </div>
+            
+            <div id = "login" class = "col s12">
+                
+                
+                <form class="col s12" action="">
+
+                    
+                    <div class="row">
+                        <div class="input-field col s12">
+                          <input id="email" type="email" class="validate">
+                          <label for="email">Email</label>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <input id="password" type="password" >
+                          <label for="password">Password</label>
+                        </div>
+                      </div>
+                      <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                        <i class="material-icons right">send</i>
+                      </button>
+                            
+
+
+
+                </form>
+            
+            
+            </div>
+            <div id = "signup" class = "col s12">
+                <form class="col s12" action="">
+
+                    
+                    <div class="row">
+                        <div class="input-field col s12">
+                          <input id="email" type="email" class="validate">
+                          <label for="email">Email</label>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <input id="password" type="password" >
+                          <label for="password">Password</label>
+                        </div>
+                      </div>
+                      <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                        <i class="material-icons right">send</i>
+                      </button>
+                            
+
+
+
+                </form>
+            </div>
+         
+         </div> 
+      </div>
+     
+   </body>
+</html>
