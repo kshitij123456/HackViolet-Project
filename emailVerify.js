@@ -34,7 +34,7 @@ var smtpTransport  = nodemailer.createTransport({
     auth: {
       type: "login", // default
       user: "ramneek983@gmail.com",
-      pass: "// write the password here"
+      pass: "//Write Your Password Here"
     }
   });
 var rand,mailOptions,host,link;

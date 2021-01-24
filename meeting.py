@@ -8,8 +8,8 @@ from selenium import webdriver
 import time
 from selenium.webdriver.chrome.options import Options
 '''from credential import email_id,password,meeting_code'''
-from key import get_score
-from bs4 import BeautifulSoup
+'''from key import get_score'''
+ bs4 import BeautifulSoup
 
 def enter_meeting(browser,email_id,password,meeting_code):
     '''
