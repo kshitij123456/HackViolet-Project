@@ -29,19 +29,30 @@
             
             <div id = "login" class = "col s12">
                 
+              <div class="container">
+                <% const m=getMessages() %>
+               
+                <% if (m.notify) { %>
+                 <% m.notify.forEach((element) => { %>
+                 <%= element %>
+                 <% }) %>
+                <% } %>
+         
+                 </div>
                 
-                <form class="col s12" action="">
+                <form class="col s12" action="/login" method="POST">
 
                     
+                  
                     <div class="row">
                         <div class="input-field col s12">
-                          <input id="email" type="email" class="validate">
+                          <input id="email" type="email" class="validate" name="email">
                           <label for="email">Email</label>
                         </div>
                       </div>
                       <div class="row">
                         <div class="input-field col s12">
-                          <input id="password" type="password" >
+                          <input id="password" type="password" name="password" >
                           <label for="password">Password</label>
                         </div>
                       </div>
@@ -57,18 +68,28 @@
             
             </div>
             <div id = "signup" class = "col s12">
-                <form class="col s12" action="">
+              <div class="container">
+                <% const M=getMessages() %>
+               
+                <% if (M.notify) { %>
+                 <% M.notify.forEach((element) => { %>
+                 <%= element %>
+                 <% }) %>
+                <% } %>
+         
+                 </div>
+                <form class="col s12" action="/signUp" method="POST">
 
                     
                     <div class="row">
                         <div class="input-field col s12">
-                          <input id="email" type="email" class="validate">
+                          <input id="email" type="email" class="validate" name="email">
                           <label for="email">Email</label>
                         </div>
                       </div>
                       <div class="row">
                         <div class="input-field col s12">
-                          <input id="password" type="password" >
+                          <input id="password" type="password"  name="password">
                           <label for="password">Password</label>
                         </div>
                       </div>
