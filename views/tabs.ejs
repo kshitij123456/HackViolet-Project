@@ -13,32 +13,38 @@
       </script> 
    </head>
    
-   <body class = "container"> 
+   <body class = "container" style="background-image: url(https://wallpapercave.com/wp/wp4716083.jpg); background-size: cover"> 
       
-      <div class="container" style="margin-left: 10%; margin-top: 10%;">
+      <div class="container" style="margin-left: 10%; margin-top: 5%;">
         <h3 style="text-align: center;">Let's Get Started!</h3>
-        <div class = "row">
-            <div class = "col s12">
+        <div class = "row" >
+            <div class = "col s12" style="background-color: #dbd7d7;">
                <ul class = "tabs">
-                  <li class = "tab col s6"><a  class="active" href = "#login">Login</a></li>
-                  <li class = "tab col s6"><a  href = "#signup">
-                     Signup</a></li>
+                  <li class = "tab col s6" style="background-color: #dbd7d7;"><a  class="active" href = "#login">Login</a></li>
+                  <li class = "tab col s6" style="background-color: #dbd7d7;"><a  href = "#signup">
+                     Register Your Email ID</a></li>
                
                </ul>
             </div>
+            <br>
+            <br>
+
+            <div class="container" style="text-align: center; color: red;" >
+              <br>
+              <br>
+              <% const m=getMessages() %>
+             
+              <% if (m.notify) { %>
+               <% m.notify.forEach((element) => { %>
+               <%= element %>
+               <% }) %>
+              <% } %>
+       
+               </div>
             
             <div id = "login" class = "col s12">
                 
-              <div class="container">
-                <% const m=getMessages() %>
-               
-                <% if (m.notify) { %>
-                 <% m.notify.forEach((element) => { %>
-                 <%= element %>
-                 <% }) %>
-                <% } %>
-         
-                 </div>
+             
                 
                 <form class="col s12" action="/login" method="POST">
 
@@ -46,17 +52,23 @@
                   
                     <div class="row">
                         <div class="input-field col s12">
-                          <input id="email" type="email" class="validate" name="email">
+                          <input id="email" type="email" class="validate" name="email" style="color: white;">
                           <label for="email">Email</label>
                         </div>
                       </div>
                       <div class="row">
                         <div class="input-field col s12">
-                          <input id="password" type="password" name="password" >
+                          <input id="password" type="password" name="password" style="color: white; >
                           <label for="password">Password</label>
                         </div>
                       </div>
-                      <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <input id="meetCode" type="text" name="meetCode" style="color: white;>
+                          <label for="meetCode">Meeting Code</label>
+                        </div>
+                      </div>
+                      <button class="btn waves-effect waves-light" type="submit" name="action" style="background-color: #dbd7d7; color: black;">Submit
                         <i class="material-icons right">send</i>
                       </button>
                             
@@ -68,16 +80,7 @@
             
             </div>
             <div id = "signup" class = "col s12">
-              <div class="container">
-                <% const M=getMessages() %>
-               
-                <% if (M.notify) { %>
-                 <% M.notify.forEach((element) => { %>
-                 <%= element %>
-                 <% }) %>
-                <% } %>
-         
-                 </div>
+              
                 <form class="col s12" action="/signUp" method="POST">
 
                     
@@ -87,12 +90,12 @@
                           <label for="email">Email</label>
                         </div>
                       </div>
-                      <div class="row">
+                      <!-- <div class="row">
                         <div class="input-field col s12">
                           <input id="password" type="password"  name="password">
                           <label for="password">Password</label>
                         </div>
-                      </div>
+                      </div> -->
                       <button class="btn waves-effect waves-light" type="submit" name="action">Submit
                         <i class="material-icons right">send</i>
                       </button>

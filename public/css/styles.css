@@ -1,16 +1,33 @@
 body {
-    background: #393e46;
+    background-image: url(https://image.freepik.com/free-photo/remote-meeting-woman-working-from-home-during-coronavirus-covid-19-quarantine-remote-office-concept_155003-12406.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
 }
 
 .heading {
-    color: #eeeeee;
-    padding-top: 80px;
-    padding-bottom: 50px;
+    /* display: inline-block; */
+    font-family: 'Merienda', cursive;
+    background-color: #6a492b;
+    /* opacity: 0.65; */
+    background: rgb(204, 204, 204); /* Fallback for older browsers without RGBA-support */
+    background: rgba(204, 204, 204, 0.5);
+    /* border-radius: 40px; */
+    color: black;
+    text-align: center;
+    padding-top: 20px;
+    padding-left: 0px;
+    /* margin-left: px; */
+    padding-bottom: 20px;
 }
 
 .banner {
+    background-color: #f4f3f3;
+    /* opacity: 0.65; */
+    background: rgb(204, 204, 204); /* Fallback for older browsers without RGBA-support */
+    background: rgba(204, 204, 204, 0.5);
+    color: black;
     width: 100%;
-    background: #eeeeee;
     position: relative;
 }
 
@@ -33,17 +50,6 @@ body {
     height: 101%;
 }
 
-.AboutUsDiv {
-    background: #eeeeee;
-    ;
-    text-align: center;
-}
-
-.ContactUsDiv {
-    background: #eeeeee;
-    text-align: center;
-}
-
 
 /* .navbar {
     background-image: url("CureMeet.png");
@@ -64,13 +70,29 @@ body {
 }
 
 .AboutUsDiv {
+    background-color: #f4f3f3;
+    /* opacity: 0.5; */
+    background: rgb(204, 204, 204); /* Fallback for older browsers without RGBA-support */
+    background: rgba(204, 204, 204, 0.5);
+    color: black;
     margin-left: 15%;
     max-width: 70%;
+    border-radius: 8px;
+    text-align: center;
+    font-family: 'Merienda', cursive;
 }
 
 .ContactUsDiv {
+    background-color: #f4f3f3;
+    /* opacity: 0.5; */
+    background: rgb(204, 204, 204); /* Fallback for older browsers without RGBA-support */
+    background: rgba(204, 204, 204, 0.5);
+    color: black;
     margin-left: 15%;
     max-width: 70%;
+    border-radius: 8px;
+    text-align: center;
+    font-family: 'Merienda', cursive;
 }
 
 .bar {

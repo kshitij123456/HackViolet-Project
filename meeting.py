@@ -7,9 +7,16 @@ Created on Tue Jan 19 19:31:14 2021
 from selenium import webdriver
 import time
 from selenium.webdriver.chrome.options import Options
-'''from credential import email_id,password,meeting_code'''
-'''from key import get_score'''
- bs4 import BeautifulSoup
+from credential import chromedriver_path
+from text_process import Node, process_data
+from key import get_score
+from bs4 import BeautifulSoup
+import sys
+
+email_id= sys.argv[1]
+password = sys.argv[2]
+meetCode=sys.argv[3]
+
 
 def enter_meeting(browser,email_id,password,meeting_code):
     '''
@@ -28,7 +35,7 @@ def enter_meeting(browser,email_id,password,meeting_code):
     login_element = browser.find_element_by_xpath('//*[@id="identifierId"]')
     login_element.send_keys(email_id)
     browser.find_element_by_xpath('//*[@id="identifierNext"]/div/button/div[2]').click()
-    time.sleep(30)
+    time.sleep(10)
     password_element = browser.find_element_by_xpath('//*[@id="password"]/div[1]/div/div[1]/input')
     password_element.send_keys(password)
     browser.find_element_by_xpath('//*[@id="passwordNext"]/div/button/div[2]').click()
@@ -81,38 +88,13 @@ def chat_detect(browser):
     time.sleep(5)
     chat_element = browser.find_element_by_xpath('//*[@id="ow3"]/div[1]/div/div[8]/div[3]/div[3]/div/div[2]/div[2]/div[2]/span[2]/div/div[2]')
     prev_div = 0 
-    while(count_meeting(browser)>1):
-        
-         soup = BeautifulSoup(browser.page_source, 'html.parser')
-         mydivs = soup.findAll("div", {"class": "GDhqjd"})
-    '''        
-         if len(mydivs) != prev_div:
-            
-             
-             curr = 0
-             
-             if prev_div != 0 :
-                curr =  prev_div + 1
-                
-             new_messages = mydivs[curr:]
-             print('new_messages length:{}'.format(len(new_messages)))
-             for new_div in new_messages:
-                 print(new_div.find('div',{"class":"YTbUzc"}).get_text())
-                 
-                 for text in new_div.find_all("div",{'class':'oIy2qc'}):
-                     text = text.get_text()
-                     print(text)
-                     try :
-                        print(get_score(text))
-                     except HttpError:
-                        print('This is an Http Error') 
-                     
-                     print(text,get_score(text))
-                 
+
+    node = Node()
+    print("Heello Worlsddd")
+    while(count_meeting(browser) > 1):
+        node = process_data(browser, node)
+        browser.find_element_by_xpath('//*[@id="ow3"]/div[1]/div/div[8]/div[3]/div[3]/div/div[2]/div[2]/div[1]/div[2]').click()
          
-         
-             prev_div = len(mydivs)
-    '''
     return 
     
 if __name__ == "__main__":
@@ -121,7 +103,7 @@ if __name__ == "__main__":
     chrome_options.add_argument('use-fake-ui-for-media-stream')
     chrome_options.add_argument('use-fake-device-for-media-stream')
     chrome_options.add_argument('allow-file-access-from-files')
-    browser = webdriver.Chrome("C:/Users/nishant/Google_Meet/chromedriver_win32/chromedriver",chrome_options=chrome_options)
+    browser = webdriver.Chrome(chromedriver_path,chrome_options=chrome_options)
     
-    browser = enter_meeting(browser,email_id,password,meeting_code)
+    browser = enter_meeting(browser,email_id,password,meetCode)
     chat_detect(browser)

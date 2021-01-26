@@ -25,6 +25,8 @@
     "express-session": "^1.17.1",
     "mongoose": "^5.11.13",
     "nodemailer": "^6.4.17",
+    "path": "^0.12.7",
+    "python-shell": "^2.0.3",
     "xoauth2": "^1.2.0"
   }
 }
