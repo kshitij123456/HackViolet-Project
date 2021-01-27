@@ -11,11 +11,15 @@ from credential import chromedriver_path
 from text_process import Node, process_data
 from key import get_score
 from bs4 import BeautifulSoup
+
 import sys
 
 email_id= sys.argv[1]
-password = sys.argv[2]
+password = sys.argv[+2]
 meetCode=sys.argv[3]
+# email_id="ramneekkaur_2k18mc089@dtu.ac.in"
+
+
 
 
 def enter_meeting(browser,email_id,password,meeting_code):
@@ -40,11 +44,20 @@ def enter_meeting(browser,email_id,password,meeting_code):
     password_element.send_keys(password)
     browser.find_element_by_xpath('//*[@id="passwordNext"]/div/button/div[2]').click()
     time.sleep(5)
-    browser.find_element_by_xpath('//*[@id="yDmH0d"]/c-wiz/div/div/div/div[2]/div[2]/div[2]/div/c-wiz/div[1]/div/div/div[1]/div').click()
-    time.sleep(10)
-    meeting_element = browser.find_element_by_xpath('//*[@id="yDmH0d"]/div[3]/div/div[2]/span/div/div[2]/div[1]/div[1]/input')
-    meeting_element.send_keys(meeting_code)
-    browser.find_element_by_xpath('//*[@id="yDmH0d"]/div[3]/div/div[2]/span/div/div[4]/div[2]/div/span/span').click()
+    try :
+        print("First Entering Method")
+        browser.find_element_by_xpath('//*[@id="yDmH0d"]/c-wiz/div/div/div/div[2]/div[2]/div[2]/div/c-wiz/div[1]/div/div/div[1]/div').click()
+        time.sleep(10)
+        meeting_element = browser.find_element_by_xpath('//*[@id="yDmH0d"]/div[3]/div/div[2]/span/div/div[2]/div[1]/div[1]/input')
+        meeting_element.send_keys(meeting_code)
+        browser.find_element_by_xpath('//*[@id="yDmH0d"]/div[3]/div/div[2]/span/div/div[4]/div[2]/div/span/span').click()
+    except:
+        print('Another Entering Method')
+        meeting_element = browser.find_element_by_xpath('//*[@id="i3"]')
+        meeting_element.click()
+        time.sleep(3)
+        meeting_element.send_keys(meeting_code)
+        browser.find_element_by_xpath('//*[@id="yDmH0d"]/c-wiz/div/div[2]/div/div[1]/div[3]/div[2]/div[2]/button/div[2]').click()
     time.sleep(10)
     browser.find_element_by_xpath('//*[@id="yDmH0d"]/c-wiz/div/div/div[8]/div[3]/div/div/div[2]/div/div[1]/div[1]/div[1]/div/div[3]/div[1]/div/div/div').click()
     browser.find_element_by_xpath('//*[@id="yDmH0d"]/c-wiz/div/div/div[8]/div[3]/div/div/div[2]/div/div[1]/div[1]/div[1]/div/div[3]/div[2]/div/div').click()
@@ -90,7 +103,7 @@ def chat_detect(browser):
     prev_div = 0 
 
     node = Node()
-    print("Heello Worlsddd")
+
     while(count_meeting(browser) > 1):
         node = process_data(browser, node)
         browser.find_element_by_xpath('//*[@id="ow3"]/div[1]/div/div[8]/div[3]/div[3]/div/div[2]/div[2]/div[1]/div[2]').click()
@@ -107,3 +120,6 @@ if __name__ == "__main__":
     
     browser = enter_meeting(browser,email_id,password,meetCode)
     chat_detect(browser)
+
+    
+

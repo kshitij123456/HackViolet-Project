@@ -5,7 +5,13 @@ from selenium.webdriver.chrome.options import Options
 from key import get_score
 from remove_user import remove_user
 
+
 print("I am in Second Script")
+# myclient = pymongo.MongoClient("mongodb://localhost:27017/")
+# mydb = myclient["cureMeet"]
+# mycol = mydb["datas"]
+
+# mycol.drop()
 
 class Node:
     def __init__(self):
@@ -28,9 +34,12 @@ def process_data(browser, node) -> Node:
             for ind in range(start, len(arr)):
                 try :
                     score = get_score(arr[ind].get_text())
-                    print(arr[ind].get_text(),score)
+                    
                     if score >= 0.9:
+                        print("Removed" ,"#" , username,"#" ,arr[ind].get_text(),"#" , round(score , 2))
                         remove_user(username, browser)
+                    else:
+                        print(arr[ind].get_text(),score)
                         
                 except :
                     print('Not english error')
@@ -43,3 +52,4 @@ def process_data(browser, node) -> Node:
          print('Index Error')           
     time.sleep(30)
     return node
+

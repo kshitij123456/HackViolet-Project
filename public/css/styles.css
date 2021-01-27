@@ -7,13 +7,14 @@ body {
 
 .heading {
     /* display: inline-block; */
-    font-family: 'Merienda', cursive;
+    font-family: 'Berkshire Swash', cursive;
     background-color: #6a492b;
     /* opacity: 0.65; */
-    background: rgb(204, 204, 204); /* Fallback for older browsers without RGBA-support */
+    background: rgb(204, 204, 204);
+    /* Fallback for older browsers without RGBA-support */
     background: rgba(204, 204, 204, 0.5);
     /* border-radius: 40px; */
-    color: black;
+    color: rgb(54, 53, 53);
     text-align: center;
     padding-top: 20px;
     padding-left: 0px;
@@ -24,7 +25,8 @@ body {
 .banner {
     background-color: #f4f3f3;
     /* opacity: 0.65; */
-    background: rgb(204, 204, 204); /* Fallback for older browsers without RGBA-support */
+    background: rgb(204, 204, 204);
+    /* Fallback for older browsers without RGBA-support */
     background: rgba(204, 204, 204, 0.5);
     color: black;
     width: 100%;
@@ -72,27 +74,29 @@ body {
 .AboutUsDiv {
     background-color: #f4f3f3;
     /* opacity: 0.5; */
-    background: rgb(204, 204, 204); /* Fallback for older browsers without RGBA-support */
+    background: rgb(204, 204, 204);
+    /* Fallback for older browsers without RGBA-support */
     background: rgba(204, 204, 204, 0.5);
     color: black;
     margin-left: 15%;
     max-width: 70%;
     border-radius: 8px;
     text-align: center;
-    font-family: 'Merienda', cursive;
+    font-family: 'Berkshire Swash', cursive;
 }
 
 .ContactUsDiv {
     background-color: #f4f3f3;
     /* opacity: 0.5; */
-    background: rgb(204, 204, 204); /* Fallback for older browsers without RGBA-support */
+    background: rgb(204, 204, 204);
+    /* Fallback for older browsers without RGBA-support */
     background: rgba(204, 204, 204, 0.5);
     color: black;
     margin-left: 15%;
     max-width: 70%;
     border-radius: 8px;
     text-align: center;
-    font-family: 'Merienda', cursive;
+    font-family: 'Berkshire Swash', cursive;
 }
 
 .bar {

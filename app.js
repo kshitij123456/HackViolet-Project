@@ -28,7 +28,18 @@ const userSchema = new mongoose.Schema({
   status : Boolean
 })
 
+const dataSchema = new mongoose.Schema({
+
+    pythonData: String , 
+    name :String, 
+    message :String, 
+    meetingCode: String , 
+    toxicity : String ,
+    time:String
+})
 const User = mongoose.model("User" , userSchema)
+const Data = mongoose.model("Data"  , dataSchema)
+var arr=[]
 
 
 var smtpTransport  = nodemailer.createTransport({      
@@ -51,9 +62,11 @@ app.get('/login' , function(req, res)
 {
     res.render('tabs.ejs')
 })
-app.get('/display' , function(req, res)
+app.get('/display' , async function(req, res)
 {
-    res.send("I am working")
+    var items= await Data.find({})
+    res.render('display.ejs' , {Items : items})
+
 })
 app.post('/signUp', async  function(req,res){
   const tempUser= await   User.findOne({email : req.body.email} )
@@ -95,7 +108,7 @@ app.post('/signUp', async  function(req,res){
 app.post('/login' , async  function(req, res)
 {
      const currUser= await User.findOne({email : req.body.email} )
-   
+    await Data.deleteMany({})
     
         if(currUser)
         {
@@ -113,9 +126,24 @@ app.post('/login' , async  function(req, res)
                    "-u",
                    path.join(__dirname, 'meeting.py' ) , req.body.email , req.body.password , req.body.meetCode]);
              }
+             
 const subprocess = runScript()
 // print output of script
 subprocess.stdout.on('data', (data) => {
+   // arr.push(data)
+   var myJSON = data.toString()
+   
+    if(myJSON.substring(0 , 7)=="Removed")
+    {
+        var arr= myJSON.split("#")
+   
+        var currData =  new Data({name:arr[1] , message:arr[2] ,  toxicity: arr[3] ,meetingCode: req.body.meetCode , time: new Date()})
+        currData.save()
+        
+       
+    }
+   
+ 
    console.log(`data:${data}`);
 });
 subprocess.stderr.on('data', (data) => {
@@ -124,6 +152,7 @@ subprocess.stderr.on('data', (data) => {
 subprocess.stderr.on('close', () => {
    console.log("Closed");
 });
+console.log("Adding to the array" +arr)
                 res.redirect('/display')
 
 
