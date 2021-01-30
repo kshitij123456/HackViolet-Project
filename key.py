@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Jan 20 17:47:48 2021
-
-@author: nishant
-"""
 from googleapiclient import discovery
 
 API_KEY='AIzaSyClYMRcU7puoRD61T4ddvTU5SDjy7M-5EY'
@@ -22,6 +16,6 @@ def get_score(text):
    return response.get('attributeScores').get('TOXICITY').get('summaryScore').get('value')
 
 
-#text = 'hello'
+#text = ''
 
 #print(get_score(text))

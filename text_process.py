@@ -3,22 +3,55 @@ from selenium import webdriver
 import time
 from selenium.webdriver.chrome.options import Options
 from key import get_score
-from remove_user import remove_user
-
-
-print("I am in Second Script")
-# myclient = pymongo.MongoClient("mongodb://localhost:27017/")
-# mydb = myclient["cureMeet"]
-# mycol = mydb["datas"]
-
-# mycol.drop()
+from remove_user import remove_user, issue_warning
+from language import cvt_to_en
 
 class Node:
     def __init__(self):
         self.prev = 0
         self.sents = 0
 
-def process_data(browser, node) -> Node:
+def process_caption(browser, username, sentence, offenders_count):
+
+    ''' This will process each caption '''
+    try :
+        score = get_score(sentence)
+        
+        if score >= 0.9:
+            print("Removed" ,"#" , username,"#" ,sentence,"#" , round(score , 2))
+            remove_user(username, browser)
+            return True, offenders_count
+        elif score >= 0.85:
+            if username not in offenders_count.keys():
+                offenders_count[username] = 1
+                issue_warning(username, browser)
+            else:
+                print("Removed" ,"#" , username,"#" ,sentence,"#" , round(score , 2))
+                remove_user(username, browser)
+                return True, offenders_count
+    except :
+        try:
+            text = cvt_to_en(sentence) 
+            score = get_score(text)
+            # print(text,score)
+            if score >= 0.9:
+                print("Removed" ,"#" , username,"#" ,sentence,"#" , round(score , 2))
+                remove_user(username, browser)
+                return True, offenders_count
+            elif score >= 0.85:
+                if username not in offenders_count.keys():
+                    offenders_count[username] = 1
+                    issue_warning(username, browser)
+                else:
+                    print("Removed" ,"#" , username,"#" ,sentence,"#" , round(score , 2))
+                    remove_user(username, browser)
+                    return True, offenders_count
+        except:   
+            print('Not Supported error')
+
+    return False, offenders_count
+    
+def process_data(browser, node, offenders_count) -> Node:
     soup = BeautifulSoup(browser.page_source, 'html.parser')
 
     mydivs = soup.findAll("div", {"class": "GDhqjd"})
@@ -34,15 +67,32 @@ def process_data(browser, node) -> Node:
             for ind in range(start, len(arr)):
                 try :
                     score = get_score(arr[ind].get_text())
-                    
+                    # print(arr[ind].get_text(),score)
                     if score >= 0.9:
                         print("Removed" ,"#" , username,"#" ,arr[ind].get_text(),"#" , round(score , 2))
                         remove_user(username, browser)
-                    else:
-                        print(arr[ind].get_text(),score)
-                        
+                    elif score >= 0.85:
+                        if username not in offenders_count.keys():
+                            offenders_count[username] = 1
+                            issue_warning(username, browser)
+                        else:
+                            print("Removed" ,"#" , username,"#" ,arr[ind].get_text(),"#" , round(score , 2))
+                            remove_user(username, browser)
                 except :
-                    print('Not english error')
+                    try:
+                        text = cvt_to_en(arr[ind].get_text()) 
+                        score = get_score(text)
+                        print(text,score)
+                        if score >= 0.9:
+                            remove_user(username, browser)
+                        elif score >= 0.85:
+                            if username not in offenders_count.keys():
+                                offenders_count[username] = 1
+                                issue_warning(username, browser)
+                            else:
+                                remove_user(username, browser)
+                    except:   
+                        print('Not Supported error')
             print("*"*20)
     
         node.prev = len(mydivs) - 1
@@ -50,6 +100,5 @@ def process_data(browser, node) -> Node:
             node.sents = len(mydivs[-1].find_all("div",{'class':'oIy2qc'}))
     except :
          print('Index Error')           
-    time.sleep(30)
-    return node
-
+    
+    return node, offenders_count

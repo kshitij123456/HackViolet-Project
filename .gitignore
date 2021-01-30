@@ -1,10 +1,8 @@
-/node_modules
-npm-debug.log
-.DS_Store
-/*.envs
 credential.py
 *.pyc
 .ipynb_checkpoints
 .vscode
 youtube.py
 debug.log
+__pycache__
+node_modules
