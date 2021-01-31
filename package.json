@@ -1,0 +1,34 @@
+{
+  "name": "curemeet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RamneekKaur983/CureMeet.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RamneekKaur983/CureMeet/issues"
+  },
+  "homepage": "https://github.com/RamneekKaur983/CureMeet#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "child_process": "^1.0.2",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-flash-messages": "^0.1.1",
+    "express-session": "^1.17.1",
+    "mongoose": "^5.11.13",
+    "nodemailer": "^6.4.17",
+    "path": "^0.12.7",
+    "puppeteer": "^5.5.0",
+    "python-shell": "^2.0.3",
+    "xoauth2": "^1.2.0"
+  }
+}
