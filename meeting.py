@@ -124,7 +124,7 @@ def chat_detect(browser, adminUsername):
         browser.find_element_by_xpath('//*[@id="ow3"]/div[1]/div/div[8]/div[3]/div[4]/div/div[2]/div[2]/div[1]/div[2]').click()
         node, offenders_count = process_data(browser, node, offenders_count)
         browser.find_element_by_xpath('//*[@id="ow3"]/div[1]/div/div[8]/div[3]/div[4]/div/div[2]/div[2]/div[1]/div[2]').click()
-        time.sleep(30)
+        time.sleep(2)
     browser.quit()    
     return 
 

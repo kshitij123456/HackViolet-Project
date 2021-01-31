@@ -6,3 +6,4 @@ youtube.py
 debug.log
 __pycache__
 node_modules
+.env

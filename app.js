@@ -1,3 +1,4 @@
+require('dotenv').config()
 var express=require('express');
 var bodyParser= require('body-parser')
 var ejs= require('ejs')
@@ -47,8 +48,8 @@ var smtpTransport  = nodemailer.createTransport({
     host: "smtp.gmail.com",
     auth: {
       type: "login", // default
-      user: "curemeet@gmail.com",
-      pass: "curemeet123"
+      user: process.env.EMAIL,
+      pass: process.env.PASSWORD
     }
   });
 var rand,mailOptions,host,link;
