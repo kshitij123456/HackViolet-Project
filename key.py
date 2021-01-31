@@ -1,6 +1,6 @@
 from googleapiclient import discovery
 
-API_KEY='AIzaSyClYMRcU7puoRD61T4ddvTU5SDjy7M-5EY'
+API_KEY= your api key
 
 # Generates API client object dynamically based on service name and version
 
