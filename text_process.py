@@ -52,6 +52,9 @@ def process_caption(browser, username, sentence, offenders_count):
     return False, offenders_count
     
 def process_data(browser, node, offenders_count) -> Node:
+    
+    ''' This function processes the data from the chat section '''
+    
     soup = BeautifulSoup(browser.page_source, 'html.parser')
 
     mydivs = soup.findAll("div", {"class": "GDhqjd"})
