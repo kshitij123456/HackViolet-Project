@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="30">
+ <!-- Compiled and minified CSS -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+ <!-- Compiled and minified JavaScript -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+ <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+         
+    <title>Document</title>
+</head>
+<body>
+    
+    <table class="highlight centered">
+        <thead>
+          <tr>
+              <th>User Name</th>
+              <th>Message</th>
+              <th>Toxicity</th>
+              <th>Time</th>
+              <th>Meeting Code</th>
+          </tr>
+        </thead>
+
+        <tbody>
+            <% Items.forEach(function(item){ %>
+          <tr>
+            <td><%=item.name%></td>
+            <td><%= item.message %></td>
+            <td><%= item.toxicity %></td>
+            <td><%= item.time %></td>
+            <td><%= item.meetingCode%></td>
+            
+          </tr>
+          
+          <% }) %>
+        </tbody>
+      </table>
+           
+      <br>
+      <br>
+  
+   <a class="waves-effect waves-light btn" style="background-color: #9e7728; margin-left: 5% ;" href="http://localhost:3000/pdf?target=http://localhost:3000/display"><i class="material-icons left">picture_as_pdf</i>Generate PDF</a>
+   <br>
+   <br>
+   <a class="waves-effect waves-light btn" style="background-color: #9e7728; margin-left: 5%;" href="https://support.google.com/meet/contact/abuse"><i class="material-icons left">report</i>Report Abuse</a>
+
+ 
+
+    
+</body>
+</html>
